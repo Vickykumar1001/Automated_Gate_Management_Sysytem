@@ -1,2 +1,6 @@
 flask
 flask_sqlalchemy
+opencv-python-headless
+numpy
+easyocr
+requests
