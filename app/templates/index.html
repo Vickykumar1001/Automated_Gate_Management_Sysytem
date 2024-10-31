@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Home</h1>
-<p>{{number}}</p>
+<p>Session data (Debug): {{ session }}</p>
+<h1>Welcome, {{ session['user_name'] }}!</h1>
+<p>Your role: {{ session['user_role'] }}</p>
+<p>Status: {{ session['user_status'] }}</p>
+<p>Gate Number: {{ session['gate_no'] }}</p>
 
 {% endblock%}
