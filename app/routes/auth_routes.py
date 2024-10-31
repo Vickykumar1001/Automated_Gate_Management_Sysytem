@@ -13,9 +13,7 @@ def register():
     email = data.get('email')
     password = data.get('password')
     phone_number = data.get('phone')
-    role = data.get('role')
-    gate_no = data.get('gate')
-    
+    gate_no = data.get('gate_no')
     # Check if the user already exists
     if User.query.filter_by(email=email).first():
         return jsonify({"error": "Email already registered"}), 400
@@ -29,9 +27,9 @@ def register():
         email=email,
         password=hashed_password,
         phone_number=phone_number,
-        role=role,
-        gate_no=gate_no,
-        status="pending"
+        role="pending",
+        status="active",
+        gate_no=gate_no
     )
 
     # Add the user to the database
@@ -49,8 +47,6 @@ def login():
     
     # Query the database to find the user by email
     user = User.query.filter_by(email=email).first()
-    if(user):
-        print("User is there")
     # Check if user exists and password is correct
     if user and check_password_hash(user.password, password):
         # Store necessary user details in session
